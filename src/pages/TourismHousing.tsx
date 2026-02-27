@@ -43,7 +43,7 @@ const TourismHousing = () => {
     },
     {
       title: 'Turizm Tesisinize İşletme Hizmeti',
-      description: 'Kişi sayısına göre değişebilen, taşınmaya hazır ve ortak alan erişimli kapalı ofisler.',
+      description: 'Belgelendirdiğimiz mülk veya tesisinize ihtiyaç duymanız halinde işletmesini 5 yıla kadar üstleniyoruz. Profesyonel elekibimizle ve geniş portfoyümüzle mülkünüzün potansiyelini olabildiğince yükseğe çıkartıyoruz. Birlikte daha fazla kazanmak için yanınızdayız.',
       image: resepsiyonImage,
       icon: Building2,
       href: '#portfolio',
