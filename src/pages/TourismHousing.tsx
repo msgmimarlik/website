@@ -32,7 +32,7 @@ const TourismHousing = () => {
       description: 'Mülkünüzün tüm yerel güvenlik, imar ve konaklama düzenlemelerine uygun olması için gerekli olması durumunda tüm röleve, plan değişikliği, restorasyon ve iç dizayn desteği sağlıyoruz.',
       image: serviceImage8,
       icon: PencilRuler,
-      href: '/mimarlik',
+      href: '/mimarlik/',
     },
     {
       title: 'Turizm Belgelendirme Danışmanlığı',
