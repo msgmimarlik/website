@@ -58,6 +58,24 @@ const MediaProtection = () => {
   return null;
 };
 
+const architectureDomains = (
+  import.meta.env.VITE_ARCHITECTURE_DOMAINS ?? "msgmimarlik.com,www.msgmimarlik.com"
+)
+  .split(",")
+  .map((domain) => domain.trim().toLowerCase())
+  .filter(Boolean);
+
+const HomeEntry = () => {
+  if (typeof window === "undefined") {
+    return <TourismHousing />;
+  }
+
+  const hostname = window.location.hostname.toLowerCase();
+  const isArchitectureDomain = architectureDomains.includes(hostname);
+
+  return isArchitectureDomain ? <Index /> : <TourismHousing />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -67,8 +85,9 @@ const App = () => (
         <MediaProtection />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<TourismHousing />} />
+          <Route path="/" element={<HomeEntry />} />
           <Route path="/mimarlik" element={<Index />} />
+          <Route path="/mimarlik/" element={<Index />} />
           <Route path="/projeler/:projectSlug" element={<ProjectDetail />} />
           <Route path="/danismanlik" element={<Navigate to="/" replace />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
