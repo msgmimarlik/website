@@ -36,7 +36,7 @@ const TourismHousing = () => {
     },
     {
       title: 'Turizm Belgelendirme Danışmanlığı',
-      description: 'Özel girişli alanlarda, hazır dekorasyonlu ya da şirketinize özel tasarlanan kurumsal ofisler.',
+      description: 'Mülkünüzün belgeyi başarıyla alabilmesi için tüm teknik gereklilikleri ve evrakları biz organize ediyor ve hazırlıyoruz. bakanlık başvurusundan denetimine kadarki tüm süreci biz takip ediyor ve yönetiyoruz.',
       image: belgeImage,
       icon: BriefcaseBusiness,
       href: '#process',
