@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import msLogo from "@/assets/ms-logo.png";
 
 type Link = {
   label: string;
@@ -62,7 +63,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("top")}
             className="flex items-center font-display text-xl font-bold tracking-tight uppercase">
             <img
-              src="/src/assets/ms-logo.PNG"
+              src={msLogo}
               alt="MS"
               className="h-8 mr-3 object-contain"
             />
