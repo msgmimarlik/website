@@ -260,7 +260,7 @@ const ProjectDetail = () => {
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-24">
           <Link
-            to="/#projects"
+            to="/mimarlik/#projects"
             className="inline-block font-display text-xs tracking-[0.25em] uppercase text-accent hover:opacity-80 transition-opacity mb-8"
           >
             Ana sayfaya dön
