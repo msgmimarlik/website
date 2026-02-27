@@ -1,12 +1,12 @@
 {
-  "redirects": [
-    {
-      "source": "/mimarlik",
-      "destination": "/mimarlik/",
-      "permanent": true
-    }
-  ],
   "routes": [
+    {
+      "src": "/mimarlik",
+      "status": 308,
+      "headers": {
+        "Location": "/mimarlik/"
+      }
+    },
     {
       "handle": "filesystem"
     },
