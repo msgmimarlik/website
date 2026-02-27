@@ -65,15 +65,33 @@ const architectureDomains = (
   .map((domain) => domain.trim().toLowerCase())
   .filter(Boolean);
 
+const isArchitectureDomain = (hostname: string) =>
+  architectureDomains.includes(hostname.toLowerCase());
+
+const BrandTitle = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    document.title = isArchitectureDomain(window.location.hostname)
+      ? "MSG MIMARLIK"
+      : "MS DANISMANLIK";
+  }, [pathname]);
+
+  return null;
+};
+
 const HomeEntry = () => {
   if (typeof window === "undefined") {
     return <TourismHousing />;
   }
 
-  const hostname = window.location.hostname.toLowerCase();
-  const isArchitectureDomain = architectureDomains.includes(hostname);
+  const isArchitectureHost = isArchitectureDomain(window.location.hostname);
 
-  return isArchitectureDomain ? <Index /> : <TourismHousing />;
+  return isArchitectureHost ? <Index /> : <TourismHousing />;
 };
 
 const App = () => (
@@ -84,6 +102,7 @@ const App = () => (
       <BrowserRouter>
         <MediaProtection />
         <ScrollToTop />
+        <BrandTitle />
         <Routes>
           <Route path="/" element={<HomeEntry />} />
           <Route path="/mimarlik" element={<Index />} />
