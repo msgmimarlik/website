@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/mimarlik",
+      "destination": "/mimarlik/",
+      "permanent": true
+    }
+  ],
   "routes": [
     {
       "handle": "filesystem"
