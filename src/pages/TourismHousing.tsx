@@ -427,7 +427,7 @@ const TourismHousing = () => {
               {showMenu && (
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-[#2C3E50] border border-accent/30 rounded shadow-lg z-50 min-w-max">
                   <a
-                    href="mailto:info@msgmimarlik.com"
+                    href="mailto:info@msdanisman.com"
                     className="flex items-center gap-3 px-6 py-4 text-white hover:bg-white/10 text-sm font-semibold tracking-widest uppercase transition-colors"
                   >
                     <Mail className="w-4 h-4" />
