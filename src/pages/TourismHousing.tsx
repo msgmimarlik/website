@@ -9,6 +9,7 @@ import apartmentImage from '@/assets/yeni1.jpg';
 import serviceImage8 from '@/assets/8.jpg';
 import belgeImage from '@/assets/belge.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
+import websiteVideo from '@/assets/website.mp4';
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -395,11 +396,17 @@ const TourismHousing = () => {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <img
-                src={heroTourismImage}
-                alt="Airbnb mülk danışmanlığı"
+              <video
+                src={websiteVideo}
                 className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
-              />
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              >
+                Tarayıcınız video etiketini desteklemiyor.
+              </video>
             </motion.div>
           </div>
         </div>
