@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Shield, Mail, MessageCircle, MapPin, X, Building2, BriefcaseBusiness, PencilRuler, ArrowRight } from 'lucide-react';
+import { Shield, Mail, MessageCircle, MapPin, X, Building2, BriefcaseBusiness, PencilRuler, ArrowRight, Play } from 'lucide-react';
 import heroTourismImage from '@/assets/hero-tourism.jpg';
 import residenceImage from '@/assets/IMG_2229.jpg';
 import houseImage from '@/assets/DSC_7100t.jpg';
@@ -9,11 +9,14 @@ import apartmentImage from '@/assets/yeni1.jpg';
 import serviceImage8 from '@/assets/8.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
+import serviceVideo0307v4 from '@/assets/0307(4).mp4';
+import serviceVideo3 from '@/assets/3.mp4';
 import serviceVideoPoster31 from '@/assets/31 kapak.jpg';
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   const handleGetInTouch = () => {
     setShowMenu(!showMenu);
@@ -27,11 +30,20 @@ const TourismHousing = () => {
     setSelectedImage(null);
   };
 
+  const openVideoModal = (videoSrc: string) => {
+    setSelectedVideo(videoSrc);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
   const serviceCards = [
     {
       title: 'Mimari Tasarım ve Proje Hizmeti',
       description: 'Mülkünüzün tüm yerel güvenlik, imar ve konaklama düzenlemelerine uygun olması için gerekli olması durumunda tüm röleve, plan değişikliği, restorasyon ve iç dizayn desteği sağlıyoruz.',
       image: serviceVideoPoster0307,
+      videoSrc: serviceVideo0307v4,
       icon: PencilRuler,
       href: '/mimarlik/',
     },
@@ -39,6 +51,7 @@ const TourismHousing = () => {
       title: 'Turizm Belgelendirme Danışmanlığı',
       description: 'Mülkünüzün belgeyi başarıyla alabilmesi için tüm teknik gereklilikleri ve evrakları biz organize ediyor ve hazırlıyoruz. Bakanlık başvurusundan denetimine kadarki tüm süreci biz takip ediyor ve yönetiyoruz.',
       image: serviceVideoPoster31,
+      videoSrc: serviceVideo3,
       icon: BriefcaseBusiness,
       href: '#process',
     },
@@ -150,7 +163,23 @@ const TourismHousing = () => {
                   className="overflow-hidden rounded-xl border border-border bg-card"
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <img src={service.image} alt={service.title} className="h-full w-full object-cover" loading="lazy" />
+                    {service.videoSrc ? (
+                      <button
+                        type="button"
+                        onClick={() => openVideoModal(service.videoSrc)}
+                        className="group/video relative h-full w-full"
+                        aria-label={`${service.title} videosunu oynat`}
+                      >
+                        <img src={service.image} alt={service.title} className="h-full w-full object-cover" loading="lazy" />
+                        <span className="pointer-events-none absolute bottom-3 right-3">
+                          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
+                            <Play className="h-5 w-5 fill-current" />
+                          </span>
+                        </span>
+                      </button>
+                    ) : (
+                      <img src={service.image} alt={service.title} className="h-full w-full object-cover" loading="lazy" />
+                    )}
                   </div>
 
                   <div className="relative px-6 pb-6 pt-8">
@@ -494,6 +523,32 @@ const TourismHousing = () => {
             className="max-w-full max-h-full object-contain"
             onClick={(e) => e.stopPropagation()}
           />
+        </div>
+      )}
+
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+          onClick={closeVideoModal}
+        >
+          <button
+            onClick={closeVideoModal}
+            className="absolute top-4 right-4 text-white hover:text-accent transition-colors z-[101]"
+            aria-label="Close video modal"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <video
+            src={selectedVideo}
+            className="w-full max-w-5xl max-h-[85vh] rounded-lg"
+            controls
+            autoPlay
+            playsInline
+            preload="metadata"
+            onClick={(event) => event.stopPropagation()}
+          >
+            Tarayiciniz video etiketini desteklemiyor.
+          </video>
         </div>
       )}
     </div>
