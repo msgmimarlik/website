@@ -7,17 +7,23 @@ import residenceImage from '@/assets/IMG_2229.jpg';
 import houseImage from '@/assets/DSC_7100t.jpg';
 import apartmentImage from '@/assets/yeni1.jpg';
 import serviceImage8 from '@/assets/8.jpg';
-import belgeImage from '@/assets/belge.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import websiteVideo from '@/assets/website.mp4';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
 import serviceVideo0307v4 from '@/assets/0307(4).mp4';
+import serviceVideo31 from '@/assets/31.mp4';
+import serviceVideoPoster31 from '@/assets/31 kapak.jpg';
 
 const SERVICE_VIDEO_0307_URL =
   import.meta.env.VITE_SERVICE_VIDEO_0307_URL ||
   '';
 
+const SERVICE_VIDEO_31_URL =
+  import.meta.env.VITE_SERVICE_VIDEO_31_URL ||
+  '';
+
 const SERVICE_VIDEO_0307_SOURCES = [serviceVideo0307v4, SERVICE_VIDEO_0307_URL].filter(Boolean);
+const SERVICE_VIDEO_31_SOURCES = [serviceVideo31, SERVICE_VIDEO_31_URL].filter(Boolean);
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -56,7 +62,8 @@ const TourismHousing = () => {
     {
       title: 'Turizm Belgelendirme Danışmanlığı',
       description: 'Mülkünüzün belgeyi başarıyla alabilmesi için tüm teknik gereklilikleri ve evrakları biz organize ediyor ve hazırlıyoruz. Bakanlık başvurusundan denetimine kadarki tüm süreci biz takip ediyor ve yönetiyoruz.',
-      image: belgeImage,
+      image: serviceVideoPoster31,
+      videoSources: SERVICE_VIDEO_31_SOURCES,
       icon: BriefcaseBusiness,
       href: '#process',
     },
