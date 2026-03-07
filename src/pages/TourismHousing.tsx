@@ -10,8 +10,9 @@ import serviceImage8 from '@/assets/8.jpg';
 import belgeImage from '@/assets/belge.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import websiteVideo from '@/assets/website.mp4';
-import serviceVideo0307 from '@/assets/0307.mp4';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
+
+const SERVICE_VIDEO_0307_URL = 'https://media.githubusercontent.com/media/msgmimarlik/website/main/src/assets/0307.mp4';
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -43,7 +44,7 @@ const TourismHousing = () => {
       title: 'Mimari Tasarım ve Proje Hizmeti',
       description: 'Mülkünüzün tüm yerel güvenlik, imar ve konaklama düzenlemelerine uygun olması için gerekli olması durumunda tüm röleve, plan değişikliği, restorasyon ve iç dizayn desteği sağlıyoruz.',
       image: serviceVideoPoster0307,
-      video: serviceVideo0307,
+      video: SERVICE_VIDEO_0307_URL,
       icon: PencilRuler,
       href: '/mimarlik/',
     },
