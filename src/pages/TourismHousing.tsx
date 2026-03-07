@@ -8,7 +8,6 @@ import houseImage from '@/assets/DSC_7100t.jpg';
 import apartmentImage from '@/assets/yeni1.jpg';
 import serviceImage8 from '@/assets/8.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
-import websiteVideo from '@/assets/website.mp4';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
 import serviceVideo0307v4 from '@/assets/0307(4).mp4';
 import serviceVideo31 from '@/assets/31.mp4';
@@ -23,7 +22,7 @@ const SERVICE_VIDEO_31_URL =
   '';
 
 const SERVICE_VIDEO_0307_SOURCES = [serviceVideo0307v4, SERVICE_VIDEO_0307_URL].filter(Boolean);
-const SERVICE_VIDEO_31_SOURCES = [SERVICE_VIDEO_31_URL, serviceVideo31, websiteVideo].filter(Boolean);
+const SERVICE_VIDEO_31_SOURCES = [SERVICE_VIDEO_31_URL, serviceVideo31].filter(Boolean);
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
