@@ -11,15 +11,18 @@ import belgeImage from '@/assets/belge.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import websiteVideo from '@/assets/website.mp4';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
+import serviceVideo0307Optimized from '@/assets/0307-optimized.mp4';
 
 const SERVICE_VIDEO_0307_URL =
   import.meta.env.VITE_SERVICE_VIDEO_0307_URL ||
-  'https://media.githubusercontent.com/media/msgmimarlik/website/main/src/assets/0307.mp4';
+  '';
+
+const SERVICE_VIDEO_0307_SOURCES = [serviceVideo0307Optimized, SERVICE_VIDEO_0307_URL].filter(Boolean);
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string[] | null>(null);
 
   const handleGetInTouch = () => {
     setShowMenu(!showMenu);
@@ -33,8 +36,8 @@ const TourismHousing = () => {
     setSelectedImage(null);
   };
 
-  const openVideoModal = (video: string) => {
-    setSelectedVideo(video);
+  const openVideoModal = (sources: string[]) => {
+    setSelectedVideo(sources);
   };
 
   const closeVideoModal = () => {
@@ -46,7 +49,7 @@ const TourismHousing = () => {
       title: 'Mimari Tasarım ve Proje Hizmeti',
       description: 'Mülkünüzün tüm yerel güvenlik, imar ve konaklama düzenlemelerine uygun olması için gerekli olması durumunda tüm röleve, plan değişikliği, restorasyon ve iç dizayn desteği sağlıyoruz.',
       image: serviceVideoPoster0307,
-      video: SERVICE_VIDEO_0307_URL,
+      videoSources: SERVICE_VIDEO_0307_SOURCES,
       icon: PencilRuler,
       href: '/mimarlik/',
     },
@@ -165,21 +168,24 @@ const TourismHousing = () => {
                   className="overflow-hidden rounded-xl border border-border bg-card"
                 >
                   <div className="relative h-44 overflow-hidden">
-                    {service.video ? (
+                    {service.videoSources?.length ? (
                       <button
                         type="button"
-                        onClick={() => openVideoModal(service.video)}
+                        onClick={() => openVideoModal(service.videoSources)}
                         className="group/video relative h-full w-full"
                         aria-label={`${service.title} videosunu buyuk ekranda oynat`}
                       >
                         <video
-                          src={service.video}
                           poster={service.image}
                           className="h-full w-full object-cover"
                           muted
                           playsInline
                           preload="metadata"
-                        />
+                        >
+                          {service.videoSources.map((source) => (
+                            <source key={source} src={source} type="video/mp4" />
+                          ))}
+                        </video>
                         <span className="pointer-events-none absolute bottom-3 right-3">
                           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
                             <Play className="h-5 w-5 fill-current" />
@@ -556,13 +562,17 @@ const TourismHousing = () => {
             <X className="w-8 h-8" />
           </button>
           <video
-            src={selectedVideo}
             className="w-full max-w-5xl max-h-[85vh] rounded-lg"
             controls
             autoPlay
+            muted
             playsInline
+            preload="metadata"
             onClick={(e) => e.stopPropagation()}
           >
+            {selectedVideo.map((source) => (
+              <source key={source} src={source} type="video/mp4" />
+            ))}
             Tarayıcınız video etiketini desteklemiyor.
           </video>
         </div>
