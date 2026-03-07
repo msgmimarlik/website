@@ -6,7 +6,7 @@ import heroTourismImage from '@/assets/hero-tourism.jpg';
 import residenceImage from '@/assets/IMG_2229.jpg';
 import houseImage from '@/assets/DSC_7100t.jpg';
 import apartmentImage from '@/assets/yeni1.jpg';
-import serviceImage8 from '@/assets/8.jpg';
+import websiteVideo from '@/assets/website.mp4';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
 import serviceVideo0307v4 from '@/assets/0307(4).mp4';
@@ -424,12 +424,17 @@ const TourismHousing = () => {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <img
-                src={serviceImage8}
-                alt="MS Danismanlik hizmet görseli"
+              <video
+                src={websiteVideo}
                 className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
-                loading="lazy"
-              />
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              >
+                Tarayıcınız video etiketini desteklemiyor.
+              </video>
             </motion.div>
           </div>
         </div>
