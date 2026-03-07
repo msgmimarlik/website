@@ -34,7 +34,7 @@ const TourismHousing = () => {
   useEffect(() => {
     const resolveVideo31Sources = async () => {
       if (!serviceVideo31) {
-        setServiceVideo31Sources([SERVICE_VIDEO_31_URL, websiteVideo].filter(Boolean));
+        setServiceVideo31Sources([SERVICE_VIDEO_31_URL].filter(Boolean));
         return;
       }
 
@@ -44,13 +44,13 @@ const TourismHousing = () => {
 
         // Git LFS pointer files are tiny and not playable as real MP4 assets.
         if (!response.ok || length <= 1024) {
-          setServiceVideo31Sources([SERVICE_VIDEO_31_URL, websiteVideo].filter(Boolean));
+          setServiceVideo31Sources([SERVICE_VIDEO_31_URL].filter(Boolean));
           return;
         }
 
-        setServiceVideo31Sources([SERVICE_VIDEO_31_URL, serviceVideo31, websiteVideo].filter(Boolean));
+        setServiceVideo31Sources([SERVICE_VIDEO_31_URL, serviceVideo31].filter(Boolean));
       } catch {
-        setServiceVideo31Sources([SERVICE_VIDEO_31_URL, websiteVideo].filter(Boolean));
+        setServiceVideo31Sources([SERVICE_VIDEO_31_URL].filter(Boolean));
       }
     };
 
