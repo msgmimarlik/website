@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Shield, Mail, MessageCircle, MapPin, X, Building2, BriefcaseBusiness, PencilRuler, ArrowRight, Play } from 'lucide-react';
@@ -29,33 +29,6 @@ const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string[] | null>(null);
-  const [serviceVideo31Sources, setServiceVideo31Sources] = useState<string[]>(SERVICE_VIDEO_31_SOURCES);
-
-  useEffect(() => {
-    const resolveVideo31Sources = async () => {
-      if (!serviceVideo31) {
-        setServiceVideo31Sources([SERVICE_VIDEO_31_URL].filter(Boolean));
-        return;
-      }
-
-      try {
-        const response = await fetch(serviceVideo31, { method: 'HEAD' });
-        const length = Number(response.headers.get('content-length') || '0');
-
-        // Git LFS pointer files are tiny and not playable as real MP4 assets.
-        if (!response.ok || length <= 1024) {
-          setServiceVideo31Sources([SERVICE_VIDEO_31_URL].filter(Boolean));
-          return;
-        }
-
-        setServiceVideo31Sources([SERVICE_VIDEO_31_URL, serviceVideo31].filter(Boolean));
-      } catch {
-        setServiceVideo31Sources([SERVICE_VIDEO_31_URL].filter(Boolean));
-      }
-    };
-
-    resolveVideo31Sources();
-  }, []);
 
   const handleGetInTouch = () => {
     setShowMenu(!showMenu);
@@ -90,7 +63,7 @@ const TourismHousing = () => {
       title: 'Turizm Belgelendirme Danışmanlığı',
       description: 'Mülkünüzün belgeyi başarıyla alabilmesi için tüm teknik gereklilikleri ve evrakları biz organize ediyor ve hazırlıyoruz. Bakanlık başvurusundan denetimine kadarki tüm süreci biz takip ediyor ve yönetiyoruz.',
       image: serviceVideoPoster31,
-      videoSources: serviceVideo31Sources,
+      videoSources: SERVICE_VIDEO_31_SOURCES,
       icon: BriefcaseBusiness,
       href: '#process',
     },
