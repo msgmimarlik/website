@@ -23,7 +23,7 @@ const SERVICE_VIDEO_31_URL =
   '';
 
 const SERVICE_VIDEO_0307_SOURCES = [serviceVideo0307v4, SERVICE_VIDEO_0307_URL].filter(Boolean);
-const SERVICE_VIDEO_31_SOURCES = [SERVICE_VIDEO_31_URL, serviceVideo31].filter(Boolean);
+const SERVICE_VIDEO_31_SOURCES = [SERVICE_VIDEO_31_URL, serviceVideo31, websiteVideo].filter(Boolean);
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
