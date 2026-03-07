@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Shield, Mail, MessageCircle, MapPin, X, Building2, BriefcaseBusiness, PencilRuler, ArrowRight } from 'lucide-react';
+import { Shield, Mail, MessageCircle, MapPin, X, Building2, BriefcaseBusiness, PencilRuler, ArrowRight, Play } from 'lucide-react';
 import heroTourismImage from '@/assets/hero-tourism.jpg';
 import residenceImage from '@/assets/IMG_2229.jpg';
 import houseImage from '@/assets/DSC_7100t.jpg';
@@ -10,10 +10,13 @@ import serviceImage8 from '@/assets/8.jpg';
 import belgeImage from '@/assets/belge.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import websiteVideo from '@/assets/website.mp4';
+import serviceVideo0307 from '@/assets/0307.mp4';
+import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   const handleGetInTouch = () => {
     setShowMenu(!showMenu);
@@ -27,11 +30,20 @@ const TourismHousing = () => {
     setSelectedImage(null);
   };
 
+  const openVideoModal = (video: string) => {
+    setSelectedVideo(video);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
   const serviceCards = [
     {
       title: 'Mimari Tasarım ve Proje Hizmeti',
       description: 'Mülkünüzün tüm yerel güvenlik, imar ve konaklama düzenlemelerine uygun olması için gerekli olması durumunda tüm röleve, plan değişikliği, restorasyon ve iç dizayn desteği sağlıyoruz.',
-      image: serviceImage8,
+      image: serviceVideoPoster0307,
+      video: serviceVideo0307,
       icon: PencilRuler,
       href: '/mimarlik/',
     },
@@ -150,8 +162,32 @@ const TourismHousing = () => {
                   className="overflow-hidden rounded-xl border border-border bg-card"
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <img src={service.image} alt={service.title} className="h-full w-full object-cover" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-black/5" />
+                    {service.video ? (
+                      <button
+                        type="button"
+                        onClick={() => openVideoModal(service.video)}
+                        className="group/video relative h-full w-full"
+                        aria-label={`${service.title} videosunu buyuk ekranda oynat`}
+                      >
+                        <video
+                          src={service.video}
+                          poster={service.image}
+                          className="h-full w-full object-cover"
+                          muted
+                          playsInline
+                          preload="metadata"
+                        />
+                        <span className="pointer-events-none absolute bottom-3 right-3">
+                          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-black shadow-lg">
+                            <Play className="h-5 w-5 fill-current" />
+                          </span>
+                        </span>
+                      </button>
+                    ) : (
+                      <>
+                        <img src={service.image} alt={service.title} className="h-full w-full object-cover" loading="lazy" />
+                      </>
+                    )}
                   </div>
 
                   <div className="relative px-6 pb-6 pt-8">
@@ -500,6 +536,32 @@ const TourismHousing = () => {
             className="max-w-full max-h-full object-contain"
             onClick={(e) => e.stopPropagation()}
           />
+        </div>
+      )}
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+          onClick={closeVideoModal}
+        >
+          <button
+            onClick={closeVideoModal}
+            className="absolute top-4 right-4 text-white hover:text-accent transition-colors z-[101]"
+            aria-label="Close video modal"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <video
+            src={selectedVideo}
+            className="w-full max-w-5xl max-h-[85vh] rounded-lg"
+            controls
+            autoPlay
+            playsInline
+            onClick={(e) => e.stopPropagation()}
+          >
+            Tarayıcınız video etiketini desteklemiyor.
+          </video>
         </div>
       )}
     </div>
