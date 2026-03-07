@@ -447,17 +447,12 @@ const TourismHousing = () => {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <video
-                src={websiteVideo}
+              <img
+                src={serviceImage8}
+                alt="MS Danismanlik hizmet görseli"
                 className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-              >
-                Tarayıcınız video etiketini desteklemiyor.
-              </video>
+                loading="lazy"
+              />
             </motion.div>
           </div>
         </div>
