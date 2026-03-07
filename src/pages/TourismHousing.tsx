@@ -11,13 +11,13 @@ import belgeImage from '@/assets/belge.jpg';
 import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import websiteVideo from '@/assets/website.mp4';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
-import serviceVideo0307Optimized from '@/assets/0307-optimized.mp4';
+import serviceVideo0307v4 from '@/assets/0307(4).mp4';
 
 const SERVICE_VIDEO_0307_URL =
   import.meta.env.VITE_SERVICE_VIDEO_0307_URL ||
   '';
 
-const SERVICE_VIDEO_0307_SOURCES = [serviceVideo0307Optimized, SERVICE_VIDEO_0307_URL].filter(Boolean);
+const SERVICE_VIDEO_0307_SOURCES = [serviceVideo0307v4, SERVICE_VIDEO_0307_URL].filter(Boolean);
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
