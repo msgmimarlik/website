@@ -12,7 +12,9 @@ import resepsiyonImage from '@/assets/resepsiyon.jpg';
 import websiteVideo from '@/assets/website.mp4';
 import serviceVideoPoster0307 from '@/assets/0307-Kapak.jpg';
 
-const SERVICE_VIDEO_0307_URL = 'https://media.githubusercontent.com/media/msgmimarlik/website/main/src/assets/0307.mp4';
+const SERVICE_VIDEO_0307_URL =
+  import.meta.env.VITE_SERVICE_VIDEO_0307_URL ||
+  'https://media.githubusercontent.com/media/msgmimarlik/website/main/src/assets/0307.mp4';
 
 const TourismHousing = () => {
   const [showMenu, setShowMenu] = useState(false);
